@@ -23,4 +23,5 @@ class EngineScoresBuilder:
       result = await engine.play(board, chess.engine.Limit(depth = self.depth_limit), info=chess.engine.Info.SCORE)
       scores.append(result.info[SCORE].relative)
 
+    await engine.quit()
     return EngineScores(name=name, scores=np.array([float(score.score(mate_score=MATE_SCORE)) for score in scores]))
